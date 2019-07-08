@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onDismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Редактировать поле
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label position="stacked">Название поля</ion-label>
+    <ion-input
+      type="text"
+      name="label"
+      [(ngModel)]="label"
+      value="{{ label }}"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Тип поля</ion-label>
+    <ion-select
+      value="{{ type }}"
+      name="type"
+      [(ngModel)]="type"
+      okText="Выбрать"
+      cancelText="Отмена"
+    >
+      <ion-select-option value="text">Текст</ion-select-option>
+      <ion-select-option value="file">Файл</ion-select-option>
+      <ion-select-option value="textarea">Большой текст</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label >Обязательно к заполнению</ion-label>
+    <ion-toggle slot="end" *ngIf="toggleReq != true" (click)="toggle()" [(ngModel)]="toggleReq" ></ion-toggle>
+    <ion-toggle slot="end" *ngIf="toggleReq === true" (click)="toggle()" checked [(ngModel)]="toggleReq" ></ion-toggle>
+  </ion-item>
+  <ion-button (click)="saveDismiss()" size="small" padding><ion-icon name="save" slot="start"></ion-icon>Сохранить</ion-button>
+</ion-content>

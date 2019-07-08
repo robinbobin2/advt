@@ -1,3 +1,6 @@
+import { AddFieldComponent } from './../components/add-field/add-field.component';
+import { FieldAdminComponent } from './../components/field-admin/field-admin.component';
+import { FieldComponent } from './../components/field/field.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
@@ -18,6 +21,9 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage]
+  providers: [AddFieldComponent],
+  declarations: [FieldComponent, HomePage, FieldAdminComponent, AddFieldComponent],
+  exports: [FieldComponent, FieldAdminComponent, AddFieldComponent],
+  entryComponents: [AddFieldComponent]
 })
 export class HomePageModule {}

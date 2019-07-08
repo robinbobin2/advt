@@ -1,14 +1,72 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Объявления и резюме
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ng-template [ngIf]="query['group_id']">
+    <ng-template [ngIf]="hasFields === false">
+      <ion-card *ngIf="query['viewer_type'] && query['viewer_type'] == 4">
+        <ion-card-header>
+          <ion-card-title>
+            Создать шаблон
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <app-field-admin
+            *ngFor="let field of fields"
+            [type]="field.type"
+            [label]="field.label"
+            [required]="field.required"
+          ></app-field-admin>
+          <ion-button (click)="addField()">Добавить поле</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ng-template>
+    <ng-template [ngIf]="hasFields === true">
+      <ion-card  *ngIf="query['viewer_type'] && query['viewer_type'] == 4">
+        <ng-template [ngIf]="fields">
+          <p>Поля есть </p>
+        </ng-template>
+        <ion-card-header>
+          <ion-card-title padding-horizontal>
+            Редактировать шаблон
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <app-field-admin
+            *ngFor="let field of fields"
+            [type]="field.type"
+            [label]="field.label"
+            [required]="field.required"
+          ></app-field-admin>
+          <ion-button size="small" padding (click)="addField()"
+            >Добавить поле</ion-button
+          >
+        </ion-card-content>
+      </ion-card>
+    </ng-template>
+    <ion-card *ngIf="hasFields && query['viewer_type'] !=4">
+      <ion-card-header>
+        <ion-card-title>
+          Опубликовать
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <app-field
+          *ngFor="let field of fields"
+          [type]="field.type"
+          [label]="field.label"
+          [required]="field.required"
+        ></app-field>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+
+  <ng-template [ngIf]="!query['group_id']">
+    <!-- лендинг -->
+  </ng-template>
 </ion-content>

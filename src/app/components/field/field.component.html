@@ -1,0 +1,6 @@
+<ion-item>
+    <ion-label position="stacked">{{label}}</ion-label>
+<ion-input *ngIf="type == 'text'" [type]="type" ></ion-input>
+<ion-textarea *ngIf="type === 'textarea'"  ></ion-textarea>
+<input *ngIf="type === 'file'" [type]="file" />
+</ion-item>

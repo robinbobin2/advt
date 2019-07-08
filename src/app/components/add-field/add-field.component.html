@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="dismiss()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>
+        Добавить поле
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-item>
+      <ion-label position="stacked">Название поля</ion-label>
+      <ion-input
+        type="text"
+        name="label"
+        [(ngModel)]="label"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Тип поля</ion-label>
+      <ion-select
+        name="type"
+        [(ngModel)]="type"
+        okText="Выбрать"
+        cancelText="Отмена"
+      >
+        <ion-select-option value="text">Текст</ion-select-option>
+        <ion-select-option value="file">Файл</ion-select-option>
+        <ion-select-option value="textarea">Большой текст</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label >Обязательно к заполнению</ion-label>
+      <ion-toggle slot="end" checked [(ngModel)]="toggleReq" ></ion-toggle>
+    </ion-item>
+    <ion-button (click)="saveDismiss()" size="small" padding><ion-icon name="save" slot="start"></ion-icon>Добавить</ion-button>
+  </ion-content>
+  
