@@ -50,20 +50,30 @@
       </ion-card>
     </ng-template>
     <ion-card *ngIf="hasFields && query['viewer_type'] !=4">
-      <ion-card-header>
-        <ion-card-title>
-          Опубликовать
-        </ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <app-field
-          *ngFor="let field of fields"
-          [type]="field.type"
-          [label]="field.label"
-          [required]="field.required"
-        ></app-field>
-      </ion-card-content>
-    </ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            Опубликовать
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <app-field
+            *ngFor="let field of fields"
+            [type]="field.type"
+            [label]="field.label"
+            [required]="field.required"
+          ></app-field>
+        </ion-card-content>
+      </ion-card>
+      <ion-card *ngIf="!hasFields && query['viewer_type'] !=4">
+          <ion-card-header>
+            <ion-card-title padding>
+              Подождите
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p padding>Скоро администратор добавит здесь поля и можно будет публиковать красивые объявления в группе</p>
+          </ion-card-content>
+        </ion-card>
   </ng-template>
 
   <ng-template [ngIf]="!query['group_id']">

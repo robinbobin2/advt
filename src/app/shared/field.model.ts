@@ -1,5 +1,5 @@
 export class Field {
-    reqired: number;
+    required: number;
       type: string;
       label: string;
 }
