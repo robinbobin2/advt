@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content>
+  <ion-button (click)="publishPost()">publishPost</ion-button>
   <ng-template [ngIf]="query['group_id']">
     <ng-template [ngIf]="hasFields === false">
       <ion-card *ngIf="query['viewer_type'] && query['viewer_type'] == 4">
@@ -21,6 +22,7 @@
             [type]="field.type"
             [label]="field.label"
             [required]="field.required"
+            [id]="field.id"
           ></app-field-admin>
           <ion-button (click)="addField()">Добавить поле</ion-button>
         </ion-card-content>
@@ -29,7 +31,6 @@
     <ng-template [ngIf]="hasFields === true">
       <ion-card  *ngIf="query['viewer_type'] && query['viewer_type'] == 4">
         <ng-template [ngIf]="fields">
-          <p>Поля есть </p>
         </ng-template>
         <ion-card-header>
           <ion-card-title padding-horizontal>
@@ -42,6 +43,7 @@
             [type]="field.type"
             [label]="field.label"
             [required]="field.required"
+            [id]="field.id"
           ></app-field-admin>
           <ion-button size="small" padding (click)="addField()"
             >Добавить поле</ion-button
@@ -67,7 +69,7 @@
       <ion-card *ngIf="!hasFields && query['viewer_type'] !=4">
           <ion-card-header>
             <ion-card-title padding>
-              Подождите
+              Надо подождать
             </ion-card-title>
           </ion-card-header>
           <ion-card-content>

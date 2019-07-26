@@ -1,5 +1,6 @@
 export class Field {
-    required: number;
-      type: string;
-      label: string;
+  id?: number;
+  required: number;
+  type: string;
+  label: string;
 }
